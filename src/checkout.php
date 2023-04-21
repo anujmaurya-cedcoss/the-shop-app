@@ -18,7 +18,7 @@ session_start();
     $grand_total = 0;
     if(isset($_SESSION['checkout'])) {
         foreach ($_SESSION['checkout'] as $key => $arr) {
-            $id = $arr['product_id'];
+            $id = $arr['id'];
             $quant = $arr['quantity'];
             $sql = "SELECT * FROM products WHERE `prod_id` = '$id'";
             $result = mysqli_query($conn, $sql);

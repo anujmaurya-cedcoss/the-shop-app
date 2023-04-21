@@ -27,7 +27,7 @@
                     <li class="nav-item"><a class="nav-link" href="./admin_user_add.php">Users</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn all-orders" >
+                    <button class="all-orders" >
                         <i class="bi-cart-fill me-1"></i>
                         All Orders
                     </button>
@@ -38,7 +38,7 @@
 
     <div >
         <h1 class = "d-flex text-center">List of all orders</h1>
-        <div class = "all-orders-list"></div>
+        <div class = "all-orders-list"><?php session_start(); echo $_SESSION['orders']?></div>
     </div>
     <!-- Footer-->
     <?php

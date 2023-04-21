@@ -34,9 +34,9 @@
                     <li class="nav-item"><a class="nav-link" href="/admin_user_add.php">Users</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                <button class="all-orders" >
                         <i class="bi-cart-fill me-1"></i>
-                        Order Status
+                        All Orders
                     </button>
                 </form>
             </div>
@@ -69,7 +69,7 @@
                 <label for="product_category" class="m-2">Product Category: 
                     <input type="text" name="product_category" id="product_category">
                 </label>
-                <label for="product_image" class="m-2">Image URL: 
+                <label for="product_image" class="m-2">Image: 
                     <input type="text" name="product_image" id="product_image">
                 </label>
                 <label for="product_quantity" class="m-2">Quantity: 

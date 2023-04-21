@@ -6,14 +6,13 @@
         case 'login':
             $user_name = $_POST['uname'];
             $pass = $_POST['pass'];
-
             $sql = "SELECT * FROM `admin` WHERE `email` = '$user_name' AND `password` = '$pass'";
             $res = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_row($res);
-            
-            echo "<pre>";
-            print_r($res);
-            print_r($row);
+            if (mysqli_num_rows($res) > 0) {
+                echo 'success';
+            } else {
+                echo 'failure';
+            }
             break;
         
         default:

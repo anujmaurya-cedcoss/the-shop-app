@@ -6,24 +6,6 @@ $(document).ready(function () {
         pass = $(".form-pass").val();
         repass = $(".form-repass").val();
         address = $(".form-address").val();
-        console.log(name1);
-        // if (!validateName(name1)) {
-        //     // show name error
-        //     $(".form-name").css('border-color', 'red');
-        //     $(".form-email").css('border-color', 'black');
-        //     $(".form-repass").css('border-color', 'black');
-        // } else if (!validateEmail(mail)) {
-        //     // show e-mail error message
-        //     $(".form-email").css('border-color', 'red');
-        //     $(".form-name").css('border-color', 'black');
-        //     $(".form-repass").css('border-color', 'black');
-        // } else if (!pass == repass || (pass.length < 1) || (repass.length < 1)) {
-        //     // show password error
-        //     $(".form-repass").css('border-color', 'red');
-        //     $(".form-email").css('border-color', 'black');
-        //     $(".form-name").css('border-color', 'black');
-        // } else {
-
         // make an ajax call
         $.ajax({
             type: "POST",
@@ -88,7 +70,8 @@ $(document).ready(function () {
             data: { 'id': id },
             dataType: 'text',
             success: function (res) {
-                console.log(res);
+                // console.log(res);
+                window.location.href = './show_wishlist.php';
             }
         })
     })
@@ -130,26 +113,6 @@ $(document).ready(function () {
         console.log($(this).id);
     })
 
-    // admin login
-    $(document).on('click', '.admin-login-btn', function() {
-        // console.log('admin login called');
-        // uname = $(".admin-login-name").val();
-        // pass = $(".admin-login-email").val();
-
-        // $.ajax({
-        //     type : 'POST',
-        //     url : './admin_login_process.php',
-        //     data : {'type' : 'login', 'uname' : uname, 'pass' : pass},
-        //     dataType : 'text',
-        //     success : function(res) {
-        //         if(res == 'success') {
-        //             window.location.href = './admin_main.php';
-        //         } else {
-        //             $('.login-error').html("invalid credentials !");
-        //         }
-        //     }
-        // })
-    })
 });
 
 function increment(id) {
@@ -161,7 +124,6 @@ function increment(id) {
         success: function (res) {
             window.location.href = './show_cart.php';
         }
-
     })
 }
 
@@ -185,8 +147,7 @@ function del(id) {
         data: { 'id': id, 'type': 'delete' },
         dataType: 'text',
         success: function (res) {
-            console.log(res);
-            // window.location.href = "./show_cart.php";
+            window.location.href = "./show_cart.php";
         }
     })
 }
@@ -200,6 +161,7 @@ function emptyCart() {
         dataType: 'text',
         success: function () {
             // display cart
+            window.location.href = './show_cart.php';
         }
     })
 }
@@ -401,30 +363,23 @@ function users(){
 }
 users()
 $(document).ready(function() {
-    $(document).on('click', "all-orders", function() {
-        window.location.href = './all_orders.php';
+    $(document).on('click', ".all-orders", function() {
+        $.ajax({
+            type : 'POST',
+            url : '/all_orders_details.php',
+            data : {'type' : 'display'},
+            dataType : 'text',
+            success : function(res) {
+                window.location.href = './all_orders.php';
+            }
+        })
     })
 })
 
-function displayAllOrders() {
-    console.log('all order called');
-    $.ajax({
-        type : 'POST',
-        url : '/all_orders_details.php',
-        data : {'type' : 'display'},
-        dataType : 'text',
-        success : function(res) {
-            $(".all-orders-list").html(res);
-        }
-    })
-}
-displayAllOrders();
-
 // admin login
 function adminLogin() {
-    console.log('admin login called');
-    uname = $(".admin-login-name").val();
-    pass = $(".admin-login-email").val();
+    uname = $(".admin-login-email").val();
+    pass = $(".admin-login-pass").val();
 
     $.ajax({
         type : 'POST',
@@ -440,3 +395,29 @@ function adminLogin() {
         }
     })
 }
+// changing status of orders
+
+$(document).on('click', '#status', function() {
+    sts = $("#status").val();
+    order_id = $(this).attr('class');
+    console.log(sts);
+    console.log('change status called');
+    $.ajax({
+        type : "POST",
+        url : "../products_action_admin.php",
+        data : {'type' : 'status', 'curr_status' : sts , 'order_id' : order_id},
+        dataType : 'text',
+        success : function(res) {
+            console.log(res);
+            $.ajax({
+            type : 'POST',
+            url : '/all_orders_details.php',
+            data : {'type' : 'display'},
+            dataType : 'text',
+            success : function(res) {
+                window.location.href = './all_orders.php';
+            }
+        })
+        }
+    })
+})

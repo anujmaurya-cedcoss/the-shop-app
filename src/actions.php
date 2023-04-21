@@ -1,29 +1,36 @@
 <?php
 session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [[]];
+}
 $method = $_POST['type'];
 require('./config.php');
 
 // function to sync the session cart with db cart
-function syncCart(){
+function syncCart()
+{
     require('./config.php');
     $user_id = $_COOKIE['user'];
     $cart_query = mysqli_query($conn, "SELECT * FROM cart WHERE user_id=$user_id");
     $cart = array();
     while ($row = mysqli_fetch_assoc($cart_query)) {
-        $cart[$row['id']] = $row['quantity'];
+        $cart[$row['product_id']] = $row['quantity'];
     }
-    foreach ($_SESSION['cart'] as $idx => $item) {
-        foreach ($item as $id => $quantity) {
-            if (isset($cart[$id])) {
-                $db_query = "UPDATE `cart` SET `quantity`='$quantity'
+    if (isset($_SESSION['cart'])) {
+
+        foreach ($_SESSION['cart'] as $idx => $item) {
+            foreach ($item as $id => $quantity) {
+                if (isset($cart[$id])) {
+                    $db_query = "UPDATE `cart` SET `quantity`='$quantity'
                 WHERE `user_id`='$user_id' AND `product_id`='$id'";
-            } else {
-                $db_query = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`)
+                } else {
+                    $db_query = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`)
                 VALUES ('$user_id', '$id', '$quantity')";
+                }
+                mysqli_query($conn, $db_query);
             }
-            mysqli_query($conn, $db_query);
+            unset($cart[$id]);
         }
-        unset($cart[$id]);
     }
     foreach ($cart as $id => $quantity) {
         mysqli_query($conn, "DELETE FROM `cart` WHERE `user_id`='$user_id' AND `product_id`='$id'");
@@ -103,7 +110,3 @@ switch ($method) {
     default:
         break;
 }
-
-
-// session_unset();
-// session_destroy();

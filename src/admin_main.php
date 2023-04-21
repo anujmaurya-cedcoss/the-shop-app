@@ -27,7 +27,7 @@
                     <li class="nav-item"><a class="nav-link" href="./admin_user_add.php">Users</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn all-orders" >
+                    <button class="all-orders" >
                         <i class="bi-cart-fill me-1"></i>
                         All Orders
                     </button>
@@ -52,8 +52,8 @@
                     <thead >
                         <tr>
                             <th>User Id</th>
-                            <th>User Name</th>
-                            <th>User Email</th>
+                            <th> Name</th>
+                            <th> Email</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -66,10 +66,8 @@
                     <thead>
                         <tr>
                             <th>Product Id</th>
-                            <th>Product Name</th>
+                            <th> Name</th>
                             <th>Quantity</th>
-                            <th>Company</th>
-                            <th>Type</th>
                             <th>Price</th>
                         </tr>
                     </thead>
@@ -82,7 +80,7 @@
                     <thead>
                         <tr>
                             <th>Product Id</th>
-                            <th>Order Quantity</th>
+                            <th>Quantity</th>
                             <th>Status</th>
                         </tr>
                     </thead>

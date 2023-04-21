@@ -45,7 +45,7 @@ if (isset($_SESSION['wishlist'])) {
                                 <h5 class=\"card-title\">$row[title]</h5>
                                 <p class=\"card-text\">$ $row[price]</p>
                                 <div class=\"card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto\">
-                                <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 buy-now\" id=\"$row[prod_id]\">Buy Now</a>
+                                <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 add-to-cart\" id=\"$row[prod_id]\">Add to cart</a>
                                     <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 delete-from-cart\" id=\"$row[prod_id]\">Delete</a>
                                     </div>
                                     <p style = 'color : red' class = 'text-center'>$str</p>      

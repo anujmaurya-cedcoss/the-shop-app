@@ -55,7 +55,7 @@ if (isset($_SESSION['cart'])) {
                         $str = "Out of Stock";
                     }
                     $total += ($row['price']);
-                    echo "<div class=\"row\" style = 'box-sizing: border-box;'>"; // see how to give box-sizing border-box here
+                    echo "<div class=\"row\" style = 'box-sizing: border-box;'>";
                     echo "<div class=\"col-lg-3 col-md-6 col-sm-6 d-flex\">
                         <div class=\"card w-100 my-2 shadow-2-strong\">
                             <img src=\"$row[image]\" class=\"card-img-top\"
@@ -64,10 +64,13 @@ if (isset($_SESSION['cart'])) {
                                 <h5 class=\"card-title\">$row[title]</h5>
                                 <p class=\"card-text\">$ $row[price]</p>
                                 <div class=\"card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto\">
-                                <a  class=\"m-3 btn btn-primary shadow-0 me-1 decrement-quantity\" id=\"$row[prod_id]\" onclick = 'decrement($row[prod_id])'>-</a>
+                                <a  class=\"m-3 btn btn-primary shadow-0 me-1 decrement-quantity\"
+                                id=\"$row[prod_id]\" onclick = 'decrement($row[prod_id])'>-</a>
                                 <h3 class = 'quantity_in_cart pl-3 mb-3' id=\"$row[prod_id]\">$quantity</h3>
-                                <a  class=\"m-3 btn btn-primary shadow-0 me-1 increment-quantity\" id=\"$row[prod_id]\" onclick = 'increment($row[prod_id])'>+</a>
-                                    <a class=\"m-3 btn btn-danger shadow-0 me-1 delete-from-cart\" id=\"$row[prod_id]\" onclick = 'del($row[prod_id])'>Delete</a>
+                                <a  class=\"m-3 btn btn-primary shadow-0 me-1 increment-quantity\"
+                                id=\"$row[prod_id]\" onclick = 'increment($row[prod_id])'>+</a>
+                                    <a class=\"m-3 btn btn-danger shadow-0 me-1 delete-from-cart\"
+                                    id=\"$row[prod_id]\" onclick = 'del($row[prod_id])'>Delete</a>
                                     </div>
                                     <p style = 'color : red' class = 'text-center'>$str</p>
                             </div>
@@ -84,9 +87,6 @@ if (isset($_SESSION['cart'])) {
     echo "</div>";
 }
 include('footer.php');
-
-// session_unset();
-// session_destroy();
 ?>
 <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>

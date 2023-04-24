@@ -106,7 +106,6 @@ switch ($method) {
         }
         break;
 
-
     default:
         break;
 }

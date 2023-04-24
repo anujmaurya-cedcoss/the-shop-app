@@ -2,10 +2,9 @@
 session_start();
 include('./config.php');
 // insert the data of session(cart, wishlist) in db
-echo "<pre></pre>";
 $user_id = $_COOKIE['user'];
 foreach ($_SESSION['wishlist'] as $product_id => $qty) {
-    // if id doesn't exist as product id in the db, then insert, 
+    // if id doesn't exist as product id in the db, then insert
     $find_sql = "SELECT * FROM `wishlist` WHERE `user_id` = '$user_id' AND `product_id` = '$product_id'";
     $result = mysqli_query($conn, $find_sql);
     $row = mysqli_fetch_assoc($result);

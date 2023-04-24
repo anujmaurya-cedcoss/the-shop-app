@@ -13,7 +13,7 @@
 <body>
     <div class="login d-flex justify-content-center">
         <form>
-            <h1 class = "text-center">Admin Login</h1>
+            <h1 class="text-center">Admin Login</h1>
             <!-- Email input -->
             <div class="form-outline mb-4 ">
                 <input type="email" id="form2Example1" class="form-control admin-login-email" />
@@ -28,7 +28,8 @@
 
             <!-- 2 column grid layout for inline styling -->
             <div class="row mb-4">
-                <button type="button" class="admin-login-btn btn btn-primary btn-block mb-4" onclick = 'adminLogin()'>Log in</button>
+                <button type="button" class="admin-login-btn btn btn-primary btn-block mb-4"
+                onclick='adminLogin()'>Log in</button>
                 <div class="row"><a href="./login.php">Login As User</a></div>
         </form>
         <div class="login-error"></div>
@@ -39,7 +40,4 @@
         </div>
 </body>
 <script src="./JS/main.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-
 </html>

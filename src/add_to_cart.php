@@ -24,9 +24,3 @@ if(!$found) {
     array_push($_SESSION['cart'], $arr);
 }
 
-echo "<pre></pre>";
-print_r($_SESSION['cart']);
-
-// session_unset();
-// session_destroy();
-?>

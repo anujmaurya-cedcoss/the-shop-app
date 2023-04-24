@@ -1,4 +1,3 @@
-<!-- <script src="./JS/main.js"></script> -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <?php
 session_start();
@@ -14,9 +13,11 @@ if (isset($_COOKIE['user']) && !$_SESSION['sync_wishlist']) {
     $id = $_COOKIE['user'];
     $sql = "SELECT * FROM `wishlist` WHERE `user_id` = '$id'";
     $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_assoc($result)) {
-        $found = false;
-        $_SESSION['wishlist'][$row['product_id']] = 1;
+    if ($result > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $found = false;
+            $_SESSION['wishlist'][$row['product_id']] = 1;
+        }
     }
 }
 echo "<h1 class = 'text-center'>My Wishlist</h1>";
@@ -45,10 +46,12 @@ if (isset($_SESSION['wishlist'])) {
                                 <h5 class=\"card-title\">$row[title]</h5>
                                 <p class=\"card-text\">$ $row[price]</p>
                                 <div class=\"card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto\">
-                                <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 add-to-cart\" id=\"$row[prod_id]\">Add to cart</a>
-                                    <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 delete-from-cart\" id=\"$row[prod_id]\">Delete</a>
+                                <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 add-to-cart\"
+                                id=\"$row[prod_id]\">Add to cart</a>
+                                    <a href=\"#!\" class=\"m-3 btn btn-primary shadow-0 me-1 delete-from-cart\"
+                                    id=\"$row[prod_id]\">Delete</a>
                                     </div>
-                                    <p style = 'color : red' class = 'text-center'>$str</p>      
+                                    <p style = 'color : red' class = 'text-center'>$str</p>
                             </div>
                         </div>
                     </div>";

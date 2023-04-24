@@ -69,10 +69,7 @@ switch ($type) {
         $order_id = $_POST['order_id'];
         $sql = "UPDATE `orders` SET `status`= '$status' WHERE `order_id` = '$order_id'";
         $result = mysqli_query($conn, $sql);
-        // echo $status. ' '. $order_id;
         break;
     default:
-        # code...
         break;
 }
-?>

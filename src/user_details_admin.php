@@ -47,5 +47,3 @@ switch ($type) {
         # code...
         break;
 }
-
-?>
